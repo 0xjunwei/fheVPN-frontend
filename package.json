@@ -1,29 +1,26 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  webpack: (config, { isServer }) => {
-    config.experiments = {
-      ...config.experiments,
-      asyncWebAssembly: true,
-    };
-
-    if (!isServer) {
-      config.resolve.fallback = {
-        ...config.resolve.fallback,
-        fs: false,
-        net: false,
-        tls: false,
-        crypto: require.resolve('crypto-browserify'),
-      };
-    }
-
-    config.module.rules.push({
-      test: /\.wasm$/,
-      type: 'webassembly/async',
-    });
-
-    return config;
+{
+  "name": "fhenix-contract-ui",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
-};
-
-module.exports = nextConfig;
+  "dependencies": {
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "ethers": "^5.7.2",
+    "framer-motion": "^10.16.16",
+    "next": "^14.0.4",
+    "fhenixjs": "0.3.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "crypto-browserify": "^3.12.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "@types/react": "^18.2.45",
+    "typescript": "^5.3.3"
+  }
+}
